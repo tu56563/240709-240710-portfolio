@@ -7,15 +7,15 @@ div,header,nav,aside,article,section,footer,figure,
 address,blockquote,video,iframe,hr,
 span,em,strong,q,a,sub,sup,details,figcaption,summary,
 time,s,del,code,mark,img {
-    font-family: "DM Serif Display", serif;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Pretendard", sans-serif;
+    /* font-family: "Noto Sans KR", sans-serif; */
     font-size: 1.0em; 
     font-weight: normal;
     font-style: normal;
     line-height: 1.5; margin: 0; padding: 0;
-    color: #fff;
+    color: #000;
 }
-a {color:#fff; text-decoration: none;}
+a {color: #000; text-decoration: none;}
 ul,ol,li {list-style: none;}
 table, tr, td ,th {border-collapse: collapse;}
 th {text-align: left;}
@@ -24,9 +24,9 @@ fieldset {border: 0;}
 input, button, input+label {cursor:pointer}
 /* 스크롤바 꾸미기 */
 body::-webkit-scrollbar {
-    background: #333;
+    background: #fff;
     width: 2px; height: 10px;
 }
 body::-webkit-scrollbar-thumb {
-    background: #ff0;
+    background: #121212;
 }

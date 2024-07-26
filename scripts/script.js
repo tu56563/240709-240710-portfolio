@@ -1,67 +1,32 @@
-// web swiper
-const webS = new Swiper('.web .swiper',{
-    autoplay:{delay:1000},
-    loop:true,
-    navigation:{
-        nextEl:'.web .swiper-button-next',
-        prevEl:'.web .swiper-button-prev',
-    }
+// fullpage js 플러그인 연결 필수!
+$("#fullpage").fullpage({
+    scrollBar : true, 
+    scrollingSpeed : 100,
+    // nav
+    navigation : true,
+    // navigationTooltips : ["소개", "특징", "프로젝트", "연락처"],
+    showActiveTooltip : true,
+    menu : "nav",
+    // anchors : ["intro","special","project","contact"],
+    //fullpage는 scrollTrigger와 함께 이용 불가
+    //fullpage(구) 제이쿼리 기능으로 애니메이션도 제이쿼리로 연결해야한다.
+    onLeave : function(index, nextIndex, direction) {
+        console.log(index, nextIndex, direction)
+        if(index == 2) {
+            $(".s3 h1").css("color", "blue")
+            //$(".s3 h1").addClass("animation class 입력")
+            $(".s3 h1").addClass("ani")
+        }
+    },
 })
-//이전, 다음 기본 값 position:absolute 인데
-//swiper 클래스 대상의 안에 작성했을 땐 swiper가 absolute를 잡는 relative 기본내장으로 별도 설정을 안해도 되지만 밖에 작성했을 땐 밖 위치 기준으로 그 부모에게 relative 설정을 따로 해줘야 한다!!
 
 // sns swiper
 const snsS = new Swiper('.sns .swiper',{
-    slidesPerView:2,//한번에 보일 슬라이드 수(모바일)
+    slidesPerView:3,//한번에 보일 슬라이드 수(모바일)
     spaceBetween:20,//슬라이드 사이 여백
     autoplay:{delay:1,desableOnInteration:true,},
     loop:true,
     speed:8000,
     freemode:true,
     // 반응형 슬라이드 수
-    breakpoints:{
-        800:{slidesPerView:3,},//800이상일때 3개
-        1200:{slidesPerView:4,},//1200이상일때 4개
-    }
-})
-
-//detail swiper
-const detailS = new Swiper('.detail .swiper',{
-    slidesPerView:2,//모바일 수
-    spaceBetween:20,
-    autoplay:{delay:2000},
-    breakpoints:{
-        800:{slidesPerView:3,},//800이상일때 3개
-        1200:{slidesPerView:4,},//1200이상일때 4개
-    }    
-})
-//detail popup
-//1. 팝업 숨기기(big_bg)
-//2. swiper img 클릭 시
-//3. 팝업 보이기
-const big_bg = document.querySelector('.big_bg')
-const detail_img = document.querySelectorAll('.detail .swiper-slide img')
-const big_img = document.querySelector('.big_bg img')
-console.log(big_bg, detail_img, big_img)
-big_bg.style.display = 'none' //팝업 초기 숨기기
-
-for(let detail of detail_img){//6개 이미지 반복문 접근
-    detail.addEventListener('click',(e)=>{
-        //클릭한 대상 관련에 a가 있다면 스크롤 위로 올라가는 기능 막기
-        e.preventDefault()
-        //큰 이미지 부모 보이기
-        big_bg.style.display = 'block'
-        //팝업 실행 시 body 스크롤 막기
-        document.body.style.overflow = 'hidden';
-        //클릭한 이미지의 경로(src)를 큰 이미지 팝업의 src로 대입하기
-        big_img.src = detail.src
-        //이전 팝업에서 내린 스크롤을 기억하지 않도록 항상 스크롤 위로 올리기
-        big_bg.children[0].scrollTo(0,0)
-    })
-}
-
-//팝업 출력 시 팝업닫기
-big_bg.addEventListener('click',()=>{
-    big_bg.style.display = 'none'
-    document.body.style.overflow = '';
 })
